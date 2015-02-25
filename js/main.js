@@ -15,38 +15,80 @@ window.onload = function() {
     
     var game = new Phaser.Game( 800, 600, Phaser.AUTO, 'game', { preload: preload, create: create, update: update } );
     
-    function preload() {
-        // Load an image and call it 'logo'.
-        game.load.image( 'logo', 'assets/phaser.png' );
+    function preload() 
+    {
+        game.load.tilemap('level1', 'assets/background.json', null, Phaser.Tilemap.TILED_JSON);
+        game.load.image( 'gameTiles', 'assets/tiles.png' );
+        game.load.image('brick', 'assets/brick.png');
+        game.load.spritesheet('dude', 'assets/dude.png', 32, 48);
     }
     
-    var bouncy;
+    var player;
+    var cursors;
     
-    function create() {
-        // Create a sprite at the center of the screen using the 'logo' image.
-        bouncy = game.add.sprite( game.world.centerX, game.world.centerY, 'logo' );
-        // Anchor the sprite at its center, as opposed to its top-left corner.
-        // so it will be truly centered.
-        bouncy.anchor.setTo( 0.5, 0.5 );
+    var map;
+    var map2;
+    var backgroundLayer;
+    var blockedLayer;
+    
+    function create() 
+    {
+        game.physics.startSystem(Phaser.Physics.ARCADE);
+     //   game.world.setBounds(0, 0, 1280, 1280);
         
-        // Turn on the arcade physics engine for this sprite.
-        game.physics.enable( bouncy, Phaser.Physics.ARCADE );
-        // Make it bounce off of the world bounds.
-        bouncy.body.collideWorldBounds = true;
+        map = game.add.tilemap('level1');
+      //  map2 = game.add.tilemap('level1');
+        map.addTilesetImage('tiles', 'gameTiles');
+       // map2.addTilesetImage('backgroundLayer', 'gameTiles');
         
-        // Add some text using a CSS style.
-        // Center it in X, and position its top 15 pixels from the top of the world.
-        var style = { font: "25px Verdana", fill: "#9999ff", align: "center" };
-        var text = game.add.text( game.world.centerX, 15, "Build something awesome.", style );
-        text.anchor.setTo( 0.5, 0.0 );
+       // backgroundLayer = map2.createLayer('backgroundLayer');
+        blockedLayer = map.createLayer('blockLayer');
+        
+        map.setCollisionBetween(1, 4000, true, 'blockLayer');
+        blockedLayer.resizeWorld();
+        //blockedLayer.debug = true;
+        
+        player = game.add.sprite(32, game.world.height - 150, 'dude');
+	 
+	game.physics.enable(player);
+	game.camera.follow(player);
+	player.body.collideWorldBounds = true;
+	
+	player.body.bounce.y = 0.2;
+	player.body.gravity.y = 300;
+		
+	player.animations.add('left', [0, 1, 2, 3], 10, true);
+	player.animations.add('right', [5, 6, 7, 8], 10, true);
+		
+	cursors = game.input.keyboard.createCursorKeys();
     }
     
-    function update() {
-        // Accelerate the 'logo' sprite towards the cursor,
-        // accelerating at 500 pixels/second and moving no faster than 500 pixels/second
-        // in X or Y.
-        // This function returns the rotation angle that makes it visually match its
-        // new trajectory.
-        bouncy.rotation = game.physics.arcade.accelerateToPointer( bouncy, this.game.input.activePointer, 500, 500, 500 );
+    function update() 
+    {
+    	game.physics.arcade.collide(player, blockedLayer);
+        player.body.velocity.x = 0;
+	 
+	if (cursors.left.isDown)
+	{
+		player.body.velocity.x = -150;
+ 
+		player.animations.play('left');
+	}
+	else if (cursors.right.isDown)
+	{
+		player.body.velocity.x = 150;
+ 		player.animations.play('right');
+	}
+	else
+	{
+		player.animations.stop();
+	
+		player.frame = 4;
+	}
+	
+	if (cursors.up.isDown && player.body.touching.down)
+	{
+		player.body.velocity.y = -350;
+	}
     }
 };
