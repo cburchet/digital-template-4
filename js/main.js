@@ -17,7 +17,7 @@ window.onload = function() {
     
     function preload() 
     {
-        game.load.tilemap('level1', 'assets/background.json', null, Phaser.Tilemap.TILED_JSON);
+        game.load.tilemap('level1', 'assets/background..json', null, Phaser.Tilemap.TILED_JSON);
         game.load.image( 'gameTiles', 'assets/tiles.png' );
         game.load.image('brick', 'assets/brick.png');
         game.load.spritesheet('dude', 'assets/dude.png', 32, 48);
