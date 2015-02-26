@@ -18,6 +18,7 @@ window.onload = function() {
     function preload() 
     {
         game.load.tilemap('level1', 'assets/background..json', null, Phaser.Tilemap.TILED_JSON);
+        game.load.audio('pressure', 'assets/Pressure.ogg');
         game.load.image( 'gameTiles', 'assets/tiles.png' );
         game.load.image('brick', 'assets/brick.png');
         game.load.image('heart', 'assets/heart.png');
@@ -39,6 +40,8 @@ window.onload = function() {
     var organs;
     var scoreText;
     var score = 0;
+    
+    var music;
     
     function create() 
     {
@@ -76,6 +79,10 @@ window.onload = function() {
 	
 	scoreText = game.add.text(0, 0, 'Score: ' + score, { font: "40px Arial", fill: 'red' });
 	scoreText.fixedToCamera = true;
+	
+	music = game.add.audio('pressure');
+	music.volume = .3;
+	music.play();
     }
     
     function update() 
