@@ -76,13 +76,15 @@ window.onload = function() {
 	createOrgan();
 	
 	
-	introText = game.add.text(game.world.centerX, 400, '- click to start -', { font: "40px Arial", fill: 'red', align: "center" });
+	introText = game.add.text(game.world.centerX - 200, 400, '- click space to start -', { font: "40px Arial", fill: 'red', align: "center" });
 	
 	introText.fixedToCamera = true;
 	this.game.paused = true;
-	if (game.input.onDown)
+	var upKey = game.input.keyboard.addKey(Phaser.Keyboard.SPACEBAR);
+	if (upKey.isDown)
 	{
 		this.game.paused = false;
+		introText.visible = false;
 		scoreText = game.add.text(game.camera.x, game.camera.y, 'Score: ' + score, { fontSize: '128px', fill: 'red' });
 		scoreText.fixedToCamera = true;
 	}
