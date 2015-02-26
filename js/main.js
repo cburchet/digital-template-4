@@ -42,6 +42,9 @@ window.onload = function() {
     var score = 0;
     
     var music;
+    var timeText;
+	var timer = 300;
+	var gameoverText;
     
     function create() 
     {
@@ -79,6 +82,13 @@ window.onload = function() {
 	
 	scoreText = game.add.text(0, 0, 'Score: ' + score, { font: "40px Arial", fill: 'red' });
 	scoreText.fixedToCamera = true;
+	
+	timeText = game.add.text(100, 0, 'Time: 2', { fontSize: '32px', fill: 'red' });
+	timeText.fixedToCamer = true;
+		
+	game.time.events.loop(Phaser.Timer.SECOND, updateTimer, this);
+		
+	game.time.events.loop(Phaser.Timer.SECOND * timer, gameover, this);
 	
 	music = game.add.audio('pressure');
 	music.volume = .3;
@@ -140,4 +150,16 @@ window.onload = function() {
 		createOrgan();
     	}
     }
+    
+    function updateTimer()
+	{
+		timer--;
+		timeText.text = 'Time: ' + Math.floor(timer/60) + ':' + timer % 60;
+	}
+	
+	function gameover()
+	{
+		this.game.paused = true;
+		gameoverText = game.add.text(350, 300, 'Game Over', { fontSize: '128px', fill: '#000' });
+	}
 };
