@@ -122,10 +122,6 @@ window.onload = function() {
     
     function createOrgan()
 	{
-		if (pos == 4)
-		{
-			this.game.paused = true;
-		}
 		organ = organs.create(game.rnd.integerInRange(100,1000), game.rnd.integerInRange(100,1000), 'heart');
 	}
     
@@ -138,9 +134,8 @@ window.onload = function() {
     
     function giveOrgan()
     {
-    	if (organCollected == true && pos < 4)
+    	if (organCollected == true)
     	{
-    		pos++;
     		organCollected = false;
 		score++;
 		scoreText.text = 'Score: ' + score;
