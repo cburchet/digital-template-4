@@ -73,9 +73,7 @@ window.onload = function() {
 		
 	cursors = game.input.keyboard.createCursorKeys();
 	
-	organs = game.add.group();
-	organs.enableBody = true;
-	organ = organs.create(spawnX[pos], spawnY[pos], 'heart');
+	organ = game.add.sprite(spawnX[pos], spawnY[pos], 'heart');
 	organ.anchor.set(.5);
 	
 	scoreText = game.add.text(128, 128, 'Score: ' + score, { fontSize: '128px', fill: '#000' });
@@ -85,7 +83,7 @@ window.onload = function() {
     {
     	game.physics.arcade.collide(player, blockedLayer);
     	game.physics.arcade.collide(girl, blockedLayer);
-    	game.physics.arcade.overlap(player, organs, collectOrgan, null, this);
+    	game.physics.arcade.overlap(player, organ, collectOrgan, null, this);
     	game.physics.arcade.collide(player, girl, giveOrgan, null, this);
         player.body.velocity.x = 0;
 	 
@@ -126,7 +124,7 @@ window.onload = function() {
     	if (organCollected = true && pos < 3)
     	{
     		pos++;
-		organ = organs.create(spawnX[pos], spawnY[pos], 'heart');
+		organ = game.add.sprite(spawnX[pos], spawnY[pos], 'heart');
 		organ.anchor.set(.5);
 		score++;
 		scoreText = game.add.text(128, 128, 'Score: ' + score, { fontSize: '128px', fill: '#000' });
