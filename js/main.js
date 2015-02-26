@@ -38,10 +38,8 @@ window.onload = function() {
     var organ;
     var organs;
     var pos = 0;
-    //var spawnX = [480, 1164, 1088, 608];
-    //var spawnY = [848, 704, 64, 112];
-    var spawnX = [100, 120, 130, 140];
-    var spawnY = [1000, 1000, 1000, 1000];
+    var spawnX = [480, 1164, 1088, 608];
+    var spawnY = [848, 704, 64, 112];
     var scoreText;
     var score = 0;
     
@@ -79,7 +77,7 @@ window.onload = function() {
 	organs.enableBody = true;
 	createOrgan();
 	
-	scoreText = game.add.text(128, 128, 'Score: ' + score, { fontSize: '128px', fill: '#000' });
+	scoreText = game.add.text(game.camera.x, game.camera.y, 'Score: ' + score, { fontSize: '128px', fill: '#000' });
     }
     
     function update() 
@@ -137,7 +135,7 @@ window.onload = function() {
     		pos++;
     		organCollected = false;
 		score++;
-		scoreText = game.add.text(128, 128, 'Score: ' + score, { fontSize: '128px', fill: '#000' });
+		scoreText = game.add.text(game.camera.x, game.camera.y, 'Score: ' + score, { fontSize: '128px', fill: '#000' });
 		createOrgan();
     	}
     }
