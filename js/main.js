@@ -69,7 +69,7 @@ window.onload = function() {
 	
 	//create organ with sprite
 	//place with random position in spawnX, spawnY
-	var pos = game.rnd.integerInRange(0,4);
+	var pos = game.rnd.integerInRange(0,3);
 	organ = game.add.sprite(spawnX[pos], spawnY[pos], 'heart');
     }
     
