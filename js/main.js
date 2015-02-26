@@ -22,9 +22,12 @@ window.onload = function() {
         game.load.image('brick', 'assets/brick.png');
         game.load.image('heart', 'assets/heart.png');
         game.load.spritesheet('dude', 'assets/dude.png', 32, 48);
+        game.load.image('girl', 'assets/static.png');
     }
     
     var player;
+    var girl;
+    
     var cursors;
     
     var map;
@@ -39,44 +42,41 @@ window.onload = function() {
     function create() 
     {
         game.physics.startSystem(Phaser.Physics.ARCADE);
-     //   game.world.setBounds(0, 0, 1280, 1280);
         
         map = game.add.tilemap('level1');
-      //  map2 = game.add.tilemap('level1');
         map.addTilesetImage('tiles', 'gameTiles');
-       // map2.addTilesetImage('backgroundLayer', 'gameTiles');
         
-       // backgroundLayer = map2.createLayer('backgroundLayer');
         blockedLayer = map.createLayer('blockLayer');
         
         map.setCollisionBetween(1, 4000, true, 'blockLayer');
         blockedLayer.resizeWorld();
-        //blockedLayer.debug = true;
         
-        player = game.add.sprite(32, game.world.height - 150, 'dude');
+        player = game.add.sprite(48, game.world.height - 150, 'dude');
 	 
 	game.physics.enable(player);
 	game.camera.follow(player);
-	player.body.collideWorldBounds = true;
 	
 	player.body.bounce.y = 0.2;
 	player.body.gravity.y = 300;
 		
 	player.animations.add('left', [0, 1, 2, 3], 10, true);
 	player.animations.add('right', [5, 6, 7, 8], 10, true);
+	
+	girl = game.add.sprite(16, game.world.height - 150, 'girl');
+	 
+	game.physics.enable(girl);
 		
 	cursors = game.input.keyboard.createCursorKeys();
 	
-	//create organ with sprite
-	//place with random position in spawnX, spawnY
 	var pos = game.rnd.integerInRange(0,3);
 	organ = game.add.sprite(spawnX[pos], spawnY[pos], 'heart');
-//	organ.scale.setTo(.5, .5);
     }
     
     function update() 
     {
     	game.physics.arcade.collide(player, blockedLayer);
+    	game.physics.arcade.overlap(player, organ, collectOrgan, null, this);
+    	game.physics.arcade.overlap(player, girl, giveOrgan, null, this);
         player.body.velocity.x = 0;
 	 
 	if (cursors.left.isDown)
@@ -101,5 +101,22 @@ window.onload = function() {
 	{
 		player.body.velocity.y = -350;
 	}
+    }
+    
+    var organCollected;
+    function collectOrgan()
+    {
+    	organ.destroy();
+    	organCollected = true;
+    }
+    
+    function giveOrgan()
+    {
+    	if (organCollected = true)
+    	{
+    		organCollected = false;
+    		var pos = game.rnd.integerInRange(0,3);
+		organ = game.add.sprite(spawnX[pos], spawnY[pos], 'heart');
+    	}
     }
 };
