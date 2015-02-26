@@ -114,6 +114,10 @@ window.onload = function() {
     
     function createOrgan()
 	{
+		if (pos == 4)
+		{
+			this.game.paused = true;
+		}
 		organ = organs.create(spawnX[pos], spawnY[pos], 'heart');
 		pos++;
 	}
