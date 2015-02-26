@@ -20,6 +20,7 @@ window.onload = function() {
         game.load.tilemap('level1', 'assets/background..json', null, Phaser.Tilemap.TILED_JSON);
         game.load.image( 'gameTiles', 'assets/tiles.png' );
         game.load.image('brick', 'assets/brick.png');
+        game.load.image('heart', 'assets/heart.png');
         game.load.spritesheet('dude', 'assets/dude.png', 32, 48);
     }
     
@@ -30,6 +31,10 @@ window.onload = function() {
     var map2;
     var backgroundLayer;
     var blockedLayer;
+    
+    var organ;
+    var spawnX = [480, 1164, 1088, 608];
+    var spawnY = [848, 704, 64, 112];
     
     function create() 
     {
@@ -61,6 +66,11 @@ window.onload = function() {
 	player.animations.add('right', [5, 6, 7, 8], 10, true);
 		
 	cursors = game.input.keyboard.createCursorKeys();
+	
+	//create organ with sprite
+	//place with random position in spawnX, spawnY
+	var pos = game.rnd.integerInRange(0,4);
+	organ = organ.add.sprite(spawnX[pos], spawnY[pos], 'heart');
     }
     
     function update() 
