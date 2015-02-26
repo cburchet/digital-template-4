@@ -40,7 +40,7 @@ window.onload = function() {
     var pos = 0;
     //var spawnX = [480, 1164, 1088, 608];
     //var spawnY = [848, 704, 64, 112];
-    var spawnX = [10, 20, 30, 40];
+    var spawnX = [100, 120, 130, 140];
     var spawnY = [game.world.height - 64, game.world.height - 64,game.world.height - 64, game.world.height - 64];
     var scoreText;
     var score = 0;
