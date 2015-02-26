@@ -37,9 +37,6 @@ window.onload = function() {
     
     var organ;
     var organs;
-    var pos = 0;
-    var spawnX = [480, 1164, 1088, 608];
-    var spawnY = [848, 704, 64, 112];
     var scoreText;
     var score = 0;
     
@@ -79,6 +76,14 @@ window.onload = function() {
 	
 	scoreText = game.add.text(game.camera.x, game.camera.y, 'Score: ' + score, { fontSize: '128px', fill: 'red' });
 	scoreText.fixedToCamera = true;
+	
+	introText = game.add.text(game.world.centerX, 400, '- click to start -', { font: "40px Arial", fill: "#ffffff", align: "center" };
+	
+	this.game.paused = true;
+	if (game.input.onDown)
+	{
+		this.game.paused = false;
+	}
     }
     
     function update() 
@@ -119,7 +124,7 @@ window.onload = function() {
 		{
 			this.game.paused = true;
 		}
-		organ = organs.create(spawnX[pos], spawnY[pos], 'heart');
+		organ = organs.create(game.rnd.integerInRange(100,1000), game.rnd.integerInRange(100,1000), 'heart');
 	}
     
     var organCollected = false;
