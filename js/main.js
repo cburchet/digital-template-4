@@ -86,7 +86,7 @@ window.onload = function() {
 		player.frame = 4;
 	}
 	
-	if (cursors.up.isDown && player.body.touching.down)
+	if (cursors.up.isDown && player.body.velocity.y == 0)
 	{
 		player.body.velocity.y = -350;
 	}
