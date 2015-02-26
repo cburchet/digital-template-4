@@ -38,6 +38,8 @@ window.onload = function() {
     var organ;
     var spawnX = [480, 1164, 1088, 608];
     var spawnY = [848, 704, 64, 112];
+    var scoreText;
+    var score;
     
     function create() 
     {
@@ -71,6 +73,8 @@ window.onload = function() {
 	
 	var pos = game.rnd.integerInRange(0,3);
 	organ = game.add.sprite(spawnX[pos], spawnY[pos], 'heart');
+	
+	scoreText = game.add.text(128, 128, 'Score: ' + score, { fontSize: '128px', fill: '#000' });
     }
     
     function update() 
@@ -108,7 +112,7 @@ window.onload = function() {
     var organCollected;
     function collectOrgan()
     {
-    	organ.destroy();
+    	organ.kill();
     	organCollected = true;
     }
     
@@ -119,6 +123,8 @@ window.onload = function() {
     		organCollected = false;
     		var pos = game.rnd.integerInRange(0,3);
 		organ = game.add.sprite(spawnX[pos], spawnY[pos], 'heart');
+		score++;
+		scoreText = game.add.text(128, 128, 'Score: ' + score, { fontSize: '128px', fill: '#000' });
     	}
     }
 };
