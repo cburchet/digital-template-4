@@ -132,7 +132,7 @@ window.onload = function() {
     
     function giveOrgan()
     {
-    	if (organCollected = true && pos < 4)
+    	if (organCollected == true && pos < 4)
     	{
     		pos++;
     		organCollected = false;
