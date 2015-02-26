@@ -55,7 +55,7 @@ window.onload = function() {
         map.setCollisionBetween(1, 4000, true, 'blockLayer');
         blockedLayer.resizeWorld();
         
-        player = game.add.sprite(64, game.world.height - 150, 'dude');
+        player = game.add.sprite(100, game.world.height - 150, 'dude');
 	 
 	game.physics.enable(player);
 	game.camera.follow(player);
