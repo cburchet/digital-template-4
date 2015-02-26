@@ -84,7 +84,7 @@ window.onload = function() {
 	scoreText.fixedToCamera = true;
 	
 	timeText = game.add.text(100, 0, 'Time: 2', { fontSize: '32px', fill: 'red' });
-	timeText.fixedToCamer = true;
+	timeText.fixedToCamera = true;
 		
 	game.time.events.loop(Phaser.Timer.SECOND, updateTimer, this);
 		
