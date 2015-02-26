@@ -37,6 +37,7 @@ window.onload = function() {
     
     var organ;
     var organs;
+    var pos = 0;
     var spawnX = [480, 1164, 1088, 608];
     var spawnY = [848, 704, 64, 112];
     var scoreText;
@@ -72,7 +73,6 @@ window.onload = function() {
 		
 	cursors = game.input.keyboard.createCursorKeys();
 	
-	var pos = game.rnd.integerInRange(0,3);
 	organs = game.add.group();
 	organs.enableBody = true;
 	organ = organs.create(spawnX[pos], spawnY[pos], 'heart');
@@ -122,10 +122,10 @@ window.onload = function() {
     
     function giveOrgan()
     {
-    	if (organCollected = true)
+    	if (organCollected = true && pos < 3)
     	{
     		organCollected = false;
-    		var pos = game.rnd.integerInRange(0,3);
+    		pos++;
 		organ = organs.create(spawnX[pos], spawnY[pos], 'heart');
 		organ.anchor.set(.5);
 		score++;
