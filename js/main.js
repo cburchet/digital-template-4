@@ -39,7 +39,7 @@ window.onload = function() {
     var spawnX = [480, 1164, 1088, 608];
     var spawnY = [848, 704, 64, 112];
     var scoreText;
-    var score;
+    var score = 0;
     
     function create() 
     {
