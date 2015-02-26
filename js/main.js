@@ -73,8 +73,9 @@ window.onload = function() {
 		
 	cursors = game.input.keyboard.createCursorKeys();
 	
-	organ = game.add.sprite(spawnX[pos], spawnY[pos], 'heart');
-	organ.anchor.set(.5);
+	organs = game.add.group();
+	organs.enableBody = true;
+	createOrgan();
 	
 	scoreText = game.add.text(128, 128, 'Score: ' + score, { fontSize: '128px', fill: '#000' });
     }
@@ -111,6 +112,12 @@ window.onload = function() {
 	}
     }
     
+    function createOrgan()
+	{
+		organ = organs.create(spawnX[pos], spawnY[pos], 'scroll');
+		pos++;
+	}
+    
     var organCollected = false;
     function collectOrgan()
     {
@@ -120,14 +127,12 @@ window.onload = function() {
     
     function giveOrgan()
     {
-    	organCollected = false;
     	if (organCollected = true && pos < 3)
     	{
-    		pos++;
-		organ = game.add.sprite(spawnX[pos], spawnY[pos], 'heart');
-		organ.anchor.set(.5);
+    		organCollected = false;
 		score++;
 		scoreText = game.add.text(128, 128, 'Score: ' + score, { fontSize: '128px', fill: '#000' });
+		createOrgan();
     	}
     }
 };
