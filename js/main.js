@@ -86,7 +86,7 @@ window.onload = function() {
     	game.physics.arcade.collide(player, blockedLayer);
     	game.physics.arcade.collide(girl, blockedLayer);
     	game.physics.arcade.overlap(player, organs, collectOrgan, null, this);
-    	game.physics.arcade.overlap(player, girl, giveOrgan, null, this);
+    	game.physics.arcade.collide(player, girl, giveOrgan, null, this);
         player.body.velocity.x = 0;
 	 
 	if (cursors.left.isDown)
