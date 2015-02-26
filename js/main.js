@@ -71,7 +71,7 @@ window.onload = function() {
 	//place with random position in spawnX, spawnY
 	var pos = game.rnd.integerInRange(0,3);
 	organ = game.add.sprite(spawnX[pos], spawnY[pos], 'heart');
-	organ.scale.setTo(.5, .5);
+//	organ.scale.setTo(.5, .5);
     }
     
     function update() 
