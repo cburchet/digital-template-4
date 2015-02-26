@@ -51,7 +51,7 @@ window.onload = function() {
         map.setCollisionBetween(1, 4000, true, 'blockLayer');
         blockedLayer.resizeWorld();
         
-        player = game.add.sprite(48, game.world.height - 150, 'dude');
+        player = game.add.sprite(64, game.world.height - 150, 'dude');
 	 
 	game.physics.enable(player);
 	game.camera.follow(player);
@@ -62,7 +62,7 @@ window.onload = function() {
 	player.animations.add('left', [0, 1, 2, 3], 10, true);
 	player.animations.add('right', [5, 6, 7, 8], 10, true);
 	
-	girl = game.add.sprite(16, game.world.height - 150, 'girl');
+	girl = game.add.sprite(32, game.world.height - 150, 'girl');
 	 
 	game.physics.enable(girl);
 		
