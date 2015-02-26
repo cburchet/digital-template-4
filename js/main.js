@@ -121,7 +121,6 @@ window.onload = function() {
 			this.game.paused = true;
 		}
 		organ = organs.create(spawnX[pos], spawnY[pos], 'heart');
-		pos++;
 	}
     
     var organCollected = false;
@@ -133,8 +132,9 @@ window.onload = function() {
     
     function giveOrgan()
     {
-    	if (organCollected = true && pos < 3)
+    	if (organCollected = true && pos < 4)
     	{
+    		pos++;
     		organCollected = false;
 		score++;
 		scoreText = game.add.text(128, 128, 'Score: ' + score, { fontSize: '128px', fill: '#000' });
