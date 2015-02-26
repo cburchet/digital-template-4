@@ -76,7 +76,7 @@ window.onload = function() {
 	createOrgan();
 	
 	
-	introText = game.add.text(game.world.centerX, 400, '- click to start -', { font: "40px Arial", fill: "#ffffff", align: "center" });
+	introText = game.add.text(game.world.centerX, 400, '- click to start -', { font: "40px Arial", fill: 'red', align: "center" });
 	
 	introText.fixedToCamera = true;
 	this.game.paused = true;
