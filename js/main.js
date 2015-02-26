@@ -74,7 +74,7 @@ window.onload = function() {
 	organs.enableBody = true;
 	createOrgan();
 	
-	scoreText = game.add.text(game.world.centerX, 400, 'Score: ' + score, { font: "40px Arial", fill: 'red' });
+	scoreText = game.add.text(0, 0, 'Score: ' + score, { font: "40px Arial", fill: 'red' });
 	scoreText.fixedToCamera = true;
     }
     
