@@ -114,7 +114,7 @@ window.onload = function() {
     
     function createOrgan()
 	{
-		organ = organs.create(spawnX[pos], spawnY[pos], 'organ');
+		organ = organs.create(spawnX[pos], spawnY[pos], 'heart');
 		pos++;
 	}
     
