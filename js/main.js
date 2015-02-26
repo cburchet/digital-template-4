@@ -39,7 +39,6 @@ window.onload = function() {
     var organs;
     var scoreText;
     var score = 0;
-    var introText;
     
     function create() 
     {
@@ -75,23 +74,10 @@ window.onload = function() {
 	organs.enableBody = true;
 	createOrgan();
 	
-	
-	introText = game.add.text(game.world.centerX - 200, 400, '- click space to start -', { font: "40px Arial", fill: 'red', align: "center" });
-	
-	introText.fixedToCamera = true;
-	this.game.paused = true;
     }
     
     function update() 
     {
-    	var upKey = game.input.keyboard.addKey(Phaser.Keyboard.SPACEBAR);
-	if (upKey.isDown)
-	{
-		this.game.paused = false;
-		introText.visible = false;
-		scoreText = game.add.text(game.camera.x, game.camera.y, 'Score: ' + score, { fontSize: '128px', fill: 'red' });
-		scoreText.fixedToCamera = true;
-	}
     	game.physics.arcade.collide(player, blockedLayer);
     	game.physics.arcade.collide(girl, blockedLayer);
     	game.physics.arcade.overlap(player, organ, collectOrgan, null, this);
