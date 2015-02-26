@@ -122,9 +122,9 @@ window.onload = function() {
     
     function giveOrgan()
     {
+    	organCollected = false;
     	if (organCollected = true && pos < 3)
     	{
-    		organCollected = false;
     		pos++;
 		organ = organs.create(spawnX[pos], spawnY[pos], 'heart');
 		organ.anchor.set(.5);
