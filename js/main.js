@@ -36,6 +36,7 @@ window.onload = function() {
     var blockedLayer;
     
     var organ;
+    var organs;
     var spawnX = [480, 1164, 1088, 608];
     var spawnY = [848, 704, 64, 112];
     var scoreText;
@@ -72,7 +73,9 @@ window.onload = function() {
 	cursors = game.input.keyboard.createCursorKeys();
 	
 	var pos = game.rnd.integerInRange(0,3);
-	organ = game.add.sprite(spawnX[pos], spawnY[pos], 'heart');
+	organs = game.add.group();
+	organs.enableBody = true;
+	organ = organs.create(spawnX[pos], spawnY[pos], 'heart');
 	
 	scoreText = game.add.text(128, 128, 'Score: ' + score, { fontSize: '128px', fill: '#000' });
     }
@@ -109,10 +112,10 @@ window.onload = function() {
 	}
     }
     
-    var organCollected;
+    var organCollected = false;
     function collectOrgan()
     {
-    	organ.kill();
+    	organ.destroy();
     	organCollected = true;
     }
     
@@ -122,7 +125,7 @@ window.onload = function() {
     	{
     		organCollected = false;
     		var pos = game.rnd.integerInRange(0,3);
-		organ = game.add.sprite(spawnX[pos], spawnY[pos], 'heart');
+		organ = organs.create(spawnX[pos], spawnY[pos], 'heart');
 		score++;
 		scoreText = game.add.text(128, 128, 'Score: ' + score, { fontSize: '128px', fill: '#000' });
     	}
