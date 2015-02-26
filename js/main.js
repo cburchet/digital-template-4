@@ -78,6 +78,7 @@ window.onload = function() {
 	createOrgan();
 	
 	scoreText = game.add.text(game.camera.x, game.camera.y, 'Score: ' + score, { fontSize: '128px', fill: '#000' });
+	scoreText.fixedToCamera = true;
     }
     
     function update() 
@@ -136,6 +137,7 @@ window.onload = function() {
     		organCollected = false;
 		score++;
 		scoreText = game.add.text(game.camera.x, game.camera.y, 'Score: ' + score, { fontSize: '128px', fill: '#000' });
+		scoreText.fixedToCamera = true;
 		createOrgan();
     	}
     }
