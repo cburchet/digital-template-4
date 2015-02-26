@@ -80,7 +80,11 @@ window.onload = function() {
 	
 	introText.fixedToCamera = true;
 	this.game.paused = true;
-	var upKey = game.input.keyboard.addKey(Phaser.Keyboard.SPACEBAR);
+    }
+    
+    function update() 
+    {
+    	var upKey = game.input.keyboard.addKey(Phaser.Keyboard.SPACEBAR);
 	if (upKey.isDown)
 	{
 		this.game.paused = false;
@@ -88,10 +92,6 @@ window.onload = function() {
 		scoreText = game.add.text(game.camera.x, game.camera.y, 'Score: ' + score, { fontSize: '128px', fill: 'red' });
 		scoreText.fixedToCamera = true;
 	}
-    }
-    
-    function update() 
-    {
     	game.physics.arcade.collide(player, blockedLayer);
     	game.physics.arcade.collide(girl, blockedLayer);
     	game.physics.arcade.overlap(player, organ, collectOrgan, null, this);
