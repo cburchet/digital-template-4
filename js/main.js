@@ -77,7 +77,7 @@ window.onload = function() {
 	organs.enableBody = true;
 	createOrgan();
 	
-	scoreText = game.add.text(game.camera.x, game.camera.y, 'Score: ' + score, { fontSize: '128px', fill: '#100' });
+	scoreText = game.add.text(game.camera.x, game.camera.y, 'Score: ' + score, { fontSize: '128px', fill: '#ff00' });
 	scoreText.fixedToCamera = true;
     }
     
@@ -136,7 +136,7 @@ window.onload = function() {
     		pos++;
     		organCollected = false;
 		score++;
-		scoreText = game.add.text(game.camera.x, game.camera.y, 'Score: ' + score, { fontSize: '128px', fill: '#100' });
+		scoreText = game.add.text(game.camera.x, game.camera.y, 'Score: ' + score, { fontSize: '128px', fill: '#ff00' });
 		scoreText.fixedToCamera = true;
 		createOrgan();
     	}
