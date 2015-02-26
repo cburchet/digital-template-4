@@ -121,7 +121,7 @@ window.onload = function() {
     var organCollected = false;
     function collectOrgan()
     {
-    	organ.destroy();
+    	organs.destroy(true, true);
     	organCollected = true;
     }
     
