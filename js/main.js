@@ -39,6 +39,7 @@ window.onload = function() {
     var organs;
     var scoreText;
     var score = 0;
+    var introText;
     
     function create() 
     {
