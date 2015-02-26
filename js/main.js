@@ -75,15 +75,16 @@ window.onload = function() {
 	organs.enableBody = true;
 	createOrgan();
 	
-	scoreText = game.add.text(game.camera.x, game.camera.y, 'Score: ' + score, { fontSize: '128px', fill: 'red' });
-	scoreText.fixedToCamera = true;
 	
-	introText = game.add.text(game.world.centerX, 400, '- click to start -', { font: "40px Arial", fill: "#ffffff", align: "center" };
+	introText = game.add.text(game.world.centerX, 400, '- click to start -', { font: "40px Arial", fill: "#ffffff", align: "center" });
 	
+	introText.fixedToCamera = true;
 	this.game.paused = true;
 	if (game.input.onDown)
 	{
 		this.game.paused = false;
+		scoreText = game.add.text(game.camera.x, game.camera.y, 'Score: ' + score, { fontSize: '128px', fill: 'red' });
+		scoreText.fixedToCamera = true;
 	}
     }
     
